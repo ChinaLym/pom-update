@@ -42,7 +42,7 @@ public class DependencyController {
     }
 
     /**
-     * http://localhost:12345/dependencies/updateNotifyStrategy?projectId=10&notifyStrategy=ALWAYS&email=cn_lym@foxmail.com
+     * http://localhost:12345/dependencies/updateNotifyStrategy?projectId=10&notifyStrategy=ALWAYS&email=your@demoemail.com
      * @param projectId
      * @param notifyStrategy
      * @param email

@@ -1,6 +1,8 @@
 # pom-update
 
-**快速体验**：[留言立即体验 Shoulder 搭的服务](https://github.com/ChinaLym/pom-update/issues/new#留言自动激活邮箱还未打通，作者看到回)~ 也可以根据源码自行搭建~
+**快速体验**：[立即体验](http://autopom.itlym.cn/) / 复制以下内容，更换邮箱和pom.xml地址后体验。[留言、提问点这里](https://github.com/ChinaLym/pom-update/issues/new#留言自动激活邮箱还未打通，作者看到回)
+
+> http://autopom.itlym.cn/projects/createWithUrl?email=yourEmail@demo.com&pomXmlUrl=https://raw.githubusercontent.com/ChinaLym/shoulder-framework/master/shoulder-dependencies/pom.xml&notifyInstantlyAfterCheck=true&notifyReason=ONLY_TEST_DEMO
 
 ## 一句话价值： 
 急速检测直接依赖是否有更新 + 通知
@@ -37,7 +39,7 @@ MYSQL_PWD
 
 ## 测试 API
 http://localhost:12345/index.html
-选择 pom 输入希望接受邮件的邮箱 cn_lym@foxmail.com
+选择 pom 输入希望接受邮件的邮箱 your@demoemail.com
 
 http://localhost:12345/test/version
 检查所有工程 version
@@ -46,10 +48,15 @@ http://localhost:12345/test/notify
 给所有需要更新的人发邮件通知
 
 调整通知策略
-http://localhost:12345/dependencies/updateNotifyStrategy?projectId=10&notifyStrategy=ALWAYS&email=cn_lym@foxmail.com
+http://localhost:12345/dependencies/updateNotifyStrategy?projectId=10&notifyStrategy=ALWAYS&email=your@demoemail.com
 
 ```bash
-curl --location --request POST 'http://localhost:12345/projects/create' --form 'email=yourEmail@yourEmail.com' --form 'pomXml=@shoulder-dependencies/pom.xml' --form 'notifyInstantlyAfterCheck=true' --form 'notifyReason=CI-<a href="https://cicd.yourdomain.com/xxx/${DRONE_REPO_NAME}">${DRONE_REPO_NAME}::${DRONE_REPO_BRANCH}</a><br> with <a href="https://cicd.yourdomain.cn/gogs/${DRONE_REPO_NAME}/${DRONE_BUILD_NUMBER}">Drone Build-${DRONE_BUILD_NUMBER}</a><br>' || echo '======= SKIP dependency check. ======='
+# TEMP TEST
+curl --location --request GET 'http://localhost:12345/projects/createWithUrl?email=yourEmail@demo.com&pomXmlUrl=https://raw.githubusercontent.com/ChinaLym/shoulder-framework/master/shoulder-dependencies/pom.xml&notifyInstantlyAfterCheck=true&notifyReason=ONLY_TEST_DEMO' || echo '======= SKIP dependency check. ======='
+```
+```bash
+# POST
+curl --location --request POST 'http://localhost:12345/projects/create' --form 'email=yourEmail@demo.com' --form 'pomXml=@shoulder-dependencies/pom.xml' --form 'notifyInstantlyAfterCheck=true' --form 'notifyReason=CI-<a href="https://cicd.yourdomain.com/xxx/${DRONE_REPO_NAME}">${DRONE_REPO_NAME}::${DRONE_REPO_BRANCH}</a><br> with <a href="https://cicd.yourdomain.cn/gogs/${DRONE_REPO_NAME}/${DRONE_BUILD_NUMBER}">Drone Build-${DRONE_BUILD_NUMBER}</a><br>' || echo '======= SKIP dependency check. ======='
 ```
 
 ---
