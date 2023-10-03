@@ -1,5 +1,7 @@
 # pom-update
-![icon.png](icon.png)
+
+**快速体验**：[留言立即体验 Shoulder 搭的服务](https://github.com/ChinaLym/pom-update/issues/new#留言自动激活邮箱还未打通，作者看到回)~ 也可以根据源码自行搭建~
+
 ## 一句话价值：
 急速检测直接依赖是否有更新 + 通知
 
@@ -52,5 +54,5 @@ curl --location --request POST 'http://localhost:12345/projects/create' --form '
 
 ---
 
-没有服务器的小伙伴若想拥有一个自己的服务器，可以尝试通过 github 的 actions 等 CI 工具、或者留言~
-
+![icon.png](icon.png)
+> 其他：本项目使用了 + [Shoulder-Framework](https://github.com/ChinaLym/shoulder-framework) （基于[Spring-Boot](https://github.com/spring-projects/spring-boot)的二次开发套件）搭建省下了不少工作量。
