@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: 'jdbc:mysql://${MYSQL_ADDR}/db_pom_update?characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai&rewriteBatchStatements=true&allowPublicKeyRetrieval=true'
+      username: root
+      password: ${MYSQL_PWD}
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      #Oracle需要打开注释
+      #validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        # 开发没必要开后台
+        #login-username: admin
+        #login-password: admin
+      filter:
+        stat:
+          # 开发可以打开，但有一定性能损耗
+          log-slow-sql: true
+          slow-sql-millis: 5000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
+
+  jpa:
+    show-sql: true    #开发时打开sql显示
+
+debug: true
+#localPath: 'F:/codes/java/self/shoulder-framework/shoulder-dependencies/pom.xml'
+localPath: 'F:/codes/java/projects/pom-update/pom.xml'

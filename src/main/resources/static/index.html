@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pom-update</title>
+</head>
+<body>
+
+<h1>添加 pom 依赖更新订阅</h1>
+添加后，每当依赖有新的稳定版本时，向您发送一封邮件，您可以在邮件中取消订阅。</br></br>
+<form action="/projects/create" method="post" enctype="multipart/form-data">
+    <label>pom.xml</label>
+    </br>
+    <input type="file" name="pomXml"/>
+    </br>
+    <label>您的邮箱</label>
+    </br>
+    <input type="email" name="email"/>
+    </br>
+    <label>检查完通知</label>
+    </br>
+    <input type="checkbox" name="notifyInstantlyAfterCheck"/>
+    </br>
+    <input type="submit" value="添加订阅"/>
+</form>
+<hr>
+
+</body>
+</html>

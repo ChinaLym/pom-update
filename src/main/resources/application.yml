@@ -1,0 +1,97 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 12345
+
+spring:
+  application:
+    name: pom-update
+  profiles:
+    active: dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+      enabled: true
+  output:
+    ansi:
+      enabled: NEVER
+
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+  mail:
+    test-connection: true
+
+shoulder:
+  application:
+    errorCodePrefix: '0x000b'
+
+  mail:
+    #smtp服务主机  qq邮箱则为smtp.qq.com
+    host: smtp.qq.com
+    port: 25
+    #服务协议
+    protocol: smtp
+    # 编码集
+    default-encoding: UTF-8 # Utf-8
+    sender-name: ${TEST_SENDER_EMAIL}
+    #发送邮件的账户
+    username: ${TEST_SENDER_EMAIL}
+    #授权码
+    password: ${TEST_EMAIL_TOKEN}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+            timeout: 10000
+
+pomupdate:
+  ext-info-list:
+    - id: org.springframework.boot:spring-boot-starter-parent
+      change-log-url: https://github.com/spring-projects/spring-boot/releases
+      opensource-url: https://github.com/spring-projects/spring-boot
+    - id: org.springframework.cloud:spring-cloud-dependencies
+      change-log-url: https://docs.spring.io/spring-cloud/docs/current/reference/html
+      opensource-url: https://spring.io/projects/spring-cloud#overview
+    - id: org.redisson:redisson
+      change-log-url: https://github.com/redisson/redisson/blob/master/CHANGELOG.md
+      opensource-url: https://github.com/redisson/redisson
+    - id: org.projectlombok:lombok
+      change-log-url: https://github.com/projectlombok/lombok/releases
+      opensource-url: https://github.com/projectlombok/lombok
+    - id: cn.hutool:hutool-all
+      change-log-url: https://gitee.com/dromara/hutool/blob/v5-master/CHANGELOG.md
+      opensource-url: https://gitee.com/dromara/hutool
+    - id: com.alibaba:transmittable-thread-local
+      change-log-url: https://github.com/alibaba/transmittable-thread-local/releases
+      opensource-url: https://github.com/alibaba/transmittable-thread-local
+    - id: com.baomidou:mybatis-plus-boot-starter
+      change-log-url: https://github.com/baomidou/mybatis-plus/blob/3.0/CHANGELOG.md
+      opensource-url: https://github.com/baomidou/mybatis-plus
+    - id: org.apache.tika:tika-core
+      change-log-url: https://github.com/apache/tika/blob/main/CHANGES.txt
+      opensource-url: https://github.com/apache/tika
+    - id: com.h2database:h2
+      change-log-url: https://github.com/h2database/h2database/releases
+      opensource-url: https://github.com/h2database/h2database
+    - id: commons-codec:commons-codec
+      change-log-url: https://github.com/apache/commons-codec/tags
+      opensource-url: https://github.com/apache/commons-codec
+    - id: mysql:mysql-connector-j
+      change-log-url: https://dev.mysql.com/doc/connector-j/{VERSION}/en/connector-j-whats-new.html
+      opensource-url: https://dev.mysql.com/doc/connector-j/en/
+    - id: mysql:mysql-connector-java
+      change-log-url: https://dev.mysql.com/doc/connector-j/{VERSION}/en/connector-j-whats-new.html
+      opensource-url: https://dev.mysql.com/doc/connector-j/en/
