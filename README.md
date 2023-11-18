@@ -1,11 +1,15 @@
 # pom-update
 
-**快速体验**：[立即体验](http://autopom.itlym.cn/) / 复制以下内容，更换邮箱和pom.xml地址后体验。[留言、提问点这里](https://github.com/ChinaLym/pom-update/issues/new#留言自动激活邮箱还未打通，作者看到回)
+## DESC：
+Check if there are updates to the direct dependencies of your maven project.
+
+**Test Now**：
+- Entrance 1：[UI page](http://autopom.itlym.cn/) [中文测试地址](http://autopom.itlym.cn/index-CN.html)
+- Entrance 2：Copy this to your browser，**Note: **Replace the **📧Email**（`yourEmail@demo.com`） and **🔗pom.xml link** into yours or you will meet error.
 
 > http://autopom.itlym.cn/projects/createWithUrl?email=yourEmail@demo.com&pomXmlUrl=https://raw.githubusercontent.com/ChinaLym/shoulder-framework/master/shoulder-dependencies/pom.xml&notifyInstantlyAfterCheck=true&notifyReason=ONLY_TEST_DEMO
 
-## 一句话价值： 
-急速检测直接依赖是否有更新 + 通知
+> [Click here if any questions](https://github.com/ChinaLym/pom-update/issues/new#留言自动激活邮箱还未打通，作者看到回)
 
 ## 同类比较
 与 maven 的 `mvn versions:display-dependency-updates` 相比
