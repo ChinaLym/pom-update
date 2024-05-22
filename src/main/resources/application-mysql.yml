@@ -40,7 +40,3 @@ spring:
 
   jpa:
     show-sql: true    #开发时打开sql显示
-
-debug: true
-#localPath: 'F:/codes/java/self/shoulder-framework/shoulder-dependencies/pom.xml'
-localPath: 'F:/codes/java/projects/pom-update/pom.xml'

@@ -2,8 +2,6 @@
 server:
   tomcat:
     uri-encoding: UTF-8
-    max-threads: 1000
-    min-spare-threads: 30
   port: 12345
   # springboot2.3优雅停机，默认 IMMEDIATE  kill -2 慢慢停
   shutdown: graceful
@@ -40,7 +38,7 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: 20s #缓冲器即最大等待时间
   profiles:
-    active: dev
+    include: h2
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -70,7 +68,12 @@ shoulder:
         enum:
           page:
             host: http://localhost:${server.port}
+    log:
+      type: json
 
+  http:
+    log:
+      type: json
   application:
     errorCodePrefix: '0x000b'
 
@@ -142,3 +145,6 @@ pomupdate:
     - id: mysql:mysql-connector-java
       change-log-url: https://dev.mysql.com/doc/connector-j/{VERSION}/en/connector-j-whats-new.html
       opensource-url: https://dev.mysql.com/doc/connector-j/en/
+
+# just for test file
+localPath: 'F:/codes/java/projects/pom-update/pom.xml'

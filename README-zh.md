@@ -22,7 +22,7 @@
 
 # ✈ 本地运行
 
-⚡ 下载代码直接运行！
+⚡ 下载代码直接运行在 `localhost:12345` ！
 
 ```bash
 git clone https://github.com/ChinaLym/pom-update
@@ -55,7 +55,7 @@ MYSQL_PWD
 - pom-update 是部署在服务端，不消耗客户端性能，检测时直接出结果；maven 的必须要客户端等待检测结果
 - pom-update 可定时检测，支持订阅，如每周发送更新邮件，并能根据是否稳定版设置是否发送邮件通知；maven 不可以
 
-**📒 In a world：**
+**📒 总结：**
 
 - pom-update 秒级出检测结果，不需要数十分钟等待获取一大堆自己部管理也不关心的间接依赖版本
 - pom-update 支持订阅，如每周发送本项目的所有依赖版本变化情况

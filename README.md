@@ -22,7 +22,7 @@ Copy this url to your browser，**Note**: Replace the **📧Email**（`yourEmail
 
 # ⏬️ Run with local
 
-⚡ Just **Clone and Run** it!
+⚡ Just **Clone and Run** it in `localhost:12345`!
 
 ```bash
 git clone https://github.com/ChinaLym/pom-update

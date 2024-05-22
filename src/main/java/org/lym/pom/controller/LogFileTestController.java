@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * 测试日志打印分文件
  *
- * http://localhost:8080/log/test
+ * http://localhost:12345/log/test
  *
  * @author lym
  */
