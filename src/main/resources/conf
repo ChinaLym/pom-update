@@ -1,0 +1,64 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: pom-update
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  sql:
+    init:
+      platform: h2
+      mode: ALWAYS
+      continue-on-error: false
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    #url: jdbc:h2:mem:dbtest;DATABASE_TO_UPPER=false;MODE=MYSQL;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
+    url: jdbc:h2:file:~/pomUpdateDb;DATABASE_TO_UPPER=false;MODE=MYSQL;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
+    username: pomUpdate
+    password: pomUpdate
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    show-sql: true    #开发时打开sql显示
+
+debug: true
+#localPath: 'F:/codes/java/self/shoulder-framework/shoulder-dependencies/pom.xml'
+localPath: 'F:/codes/java/projects/pom-update/pom.xml'
+
+shoulder:
+  application:
+    errorCodePrefix: '0x000b'
+  web:
+    log:
+      type: json
+
+  http:
+    log:
+      type: json
+  mail:
+    #smtp服务主机  qq邮箱则为smtp.qq.com
+    host: smtp.qq.com
+    port: 25
+    #服务协议
+    protocol: smtp
+    # 编码集
+    default-encoding: UTF-8 # Utf-8
+    sender-name: 1730398492@qq.com
+    #发送邮件的账户
+    username: 1730398492@qq.com
+    #授权码
+    password: xxx
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+            timeout: 10000
