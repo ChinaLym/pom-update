@@ -1,0 +1,144 @@
+# Tomcat
+server:
+  tomcat:
+    uri-encoding: UTF-8
+    max-threads: 1000
+    min-spare-threads: 30
+  port: 12345
+  # springboot2.3优雅停机，默认 IMMEDIATE  kill -2 慢慢停
+  shutdown: graceful
+  #开启压缩 提高响应速度 减少带宽压力
+  compression:
+    enabled: true
+    mime-types: text/html,text/xml,text/plain,text/css,application/javascript,application/json,image/svg+xml
+    min-response-size: 1024
+  servlet:
+    session:
+      # cookie 安全
+      cookie:
+        secure: true
+        same-site: none
+        name: pomupdate
+        http-only: true
+    encoding:
+      charset: UTF-8
+  #错误处理
+  error:
+    include-stacktrace: never
+    include-exception: false
+    include-message: never
+    include-binding-errors: never
+  undertow:
+    threads:
+      io: 32
+      worker: 256
+    buffer-size: 1024
+
+spring:
+  application:
+    name: pom-update
+  lifecycle:
+    timeout-per-shutdown-phase: 20s #缓冲器即最大等待时间
+  profiles:
+    active: dev
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+      enabled: true
+  output:
+    ansi:
+      enabled: NEVER
+
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+    database-platform: org.hibernate.dialect.MySQLDialect
+  mail:
+    test-connection: true
+
+shoulder:
+  web:
+    ext:
+      dictionary:
+        storageType: enum
+        enum:
+          page:
+            host: http://localhost:${server.port}
+
+  application:
+    errorCodePrefix: '0x000b'
+
+  mail:
+    #smtp服务主机  qq邮箱则为smtp.qq.com
+    host: smtp.qq.com
+    port: 25
+    #服务协议
+    protocol: smtp
+    # 编码集
+    default-encoding: UTF-8 # Utf-8
+    sender-name: ${TEST_SENDER_EMAIL}
+    #发送邮件的账户
+    username: ${TEST_SENDER_EMAIL}
+    #授权码
+    password: ${TEST_EMAIL_TOKEN}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+            timeout: 10000
+logging:
+  level:
+    org.springframework: warn
+    org.hibernate: info
+    org.redisson: info
+    io.lettuce: info
+    io.netty: info
+    org.apache.http: warn
+
+pomupdate:
+  ext-info-list:
+    - id: org.springframework.boot:spring-boot-starter-parent
+      change-log-url: https://github.com/spring-projects/spring-boot/releases
+      opensource-url: https://github.com/spring-projects/spring-boot
+    - id: org.springframework.cloud:spring-cloud-dependencies
+      change-log-url: https://docs.spring.io/spring-cloud/docs/current/reference/html
+      opensource-url: https://spring.io/projects/spring-cloud#overview
+    - id: org.redisson:redisson
+      change-log-url: https://github.com/redisson/redisson/blob/master/CHANGELOG.md
+      opensource-url: https://github.com/redisson/redisson
+    - id: org.projectlombok:lombok
+      change-log-url: https://github.com/projectlombok/lombok/releases
+      opensource-url: https://github.com/projectlombok/lombok
+    - id: cn.hutool:hutool-all
+      change-log-url: https://gitee.com/dromara/hutool/blob/v5-master/CHANGELOG.md
+      opensource-url: https://gitee.com/dromara/hutool
+    - id: com.alibaba:transmittable-thread-local
+      change-log-url: https://github.com/alibaba/transmittable-thread-local/releases
+      opensource-url: https://github.com/alibaba/transmittable-thread-local
+    - id: com.baomidou:mybatis-plus-boot-starter
+      change-log-url: https://github.com/baomidou/mybatis-plus/blob/3.0/CHANGELOG.md
+      opensource-url: https://github.com/baomidou/mybatis-plus
+    - id: org.apache.tika:tika-core
+      change-log-url: https://github.com/apache/tika/blob/main/CHANGES.txt
+      opensource-url: https://github.com/apache/tika
+    - id: com.h2database:h2
+      change-log-url: https://github.com/h2database/h2database/releases
+      opensource-url: https://github.com/h2database/h2database
+    - id: commons-codec:commons-codec
+      change-log-url: https://github.com/apache/commons-codec/tags
+      opensource-url: https://github.com/apache/commons-codec
+    - id: mysql:mysql-connector-j
+      change-log-url: https://dev.mysql.com/doc/connector-j/{VERSION}/en/connector-j-whats-new.html
+      opensource-url: https://dev.mysql.com/doc/connector-j/en/
+    - id: mysql:mysql-connector-java
+      change-log-url: https://dev.mysql.com/doc/connector-j/{VERSION}/en/connector-j-whats-new.html
+      opensource-url: https://dev.mysql.com/doc/connector-j/en/

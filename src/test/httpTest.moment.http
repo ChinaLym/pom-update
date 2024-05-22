@@ -1,0 +1,40 @@
+###
+POST http://localhost:12345/api/post/add
+Content-Type: application/json
+
+{
+  "type": "MOMENT",
+  "visibility": "PUBLIC",
+  "creator": "user123",
+  "title": "title",
+  "content": "分享一段有趣的视频。",
+  "device": "mobile"
+
+}
+
+
+//"aviliableUserIdList": [],
+//"aviliableUserTagList": [],
+//"invisibleUserIdList": [],
+//"invisibleUserTagList": [],
+//"mediaInfoList": [],
+//"hashtags": [],
+//"tags": [],
+//"likeNumber": 0,
+//"dislikeNumber": 0,
+//"loveNumber": 0,
+//"commentNumber": 0,
+//"shareNumber": 0,
+//"readNumber": 0
+
+###
+GET http://localhost:12345/api/post/65a4de519fc1f542e09ff021
+
+
+###
+POST http://localhost:12345/api/post/delete/65a4de519fc1f542e09ff021
+Content-Type: application/json
+
+
+###
+GET http://localhost:12345/api/post/queryList?ids=65a4de519fc1f542e09ff021

@@ -1,0 +1,5 @@
+###
+POST http://localhost:12345/api/attitude/add/{{relatedType}}/{{relatedId}}/like?userId=123
+
+
+POST http://localhost:12345/api/attitude/add/{{relatedType}}/{{relatedId}}/love?userId=123

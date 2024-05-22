@@ -1,0 +1,90 @@
+# drone 自动构建
+name: test-project autodeploy
+kind: pipeline
+type: docker
+
+clone:
+  # 不需要拉取 commit 历史，加快速度
+  depth: 1
+  # 需要 clone
+  disable: false
+
+# drone 构建步骤
+steps:
+  - name: Compile & Package
+    pull: if-not-exists
+    image: cnlym/maven:3-jdk-21-alpine-aliyun
+    commands:
+      # 开始打包maven工程 跳过测试步骤
+      - mvn clean package -Dmaven.test.skip=true -T 1C
+      - cp target/executable.jar ./executable.jar
+
+  - name: Upload Jar
+    pull: if-not-exists
+    image: appleboy/drone-scp
+    settings:
+      host:
+        from_secret: ssh_host
+      username:
+        from_secret: ssh_user
+      password:
+        from_secret: ssh_pwd
+      port:
+        from_secret: ssh_port
+      target: /opt/bin/java
+      #cicd/${DRONE_REPO_NAME}
+      source: ./executable.jar
+
+    when:
+      branch:
+        - master
+
+  - name: SSH & Start
+    pull: if-not-exists
+    image: appleboy/drone-ssh
+    settings:
+      host:
+        from_secret: ssh_host
+      username:
+        from_secret: ssh_user
+      password:
+        from_secret: ssh_pwd
+      port:
+        from_secret: ssh_port
+      # TODO 【优化】cicd部署脚本未返回，而是10min超时，这个现象其他人也有遇到 https://github.com/appleboy/drone-ssh/issues/125
+        command_timeout: 9m
+      script:
+        # 运行部署脚本
+        #- cd /opt/bin/java/cicd
+        # 停掉进程
+        - /opt/bin/java/tryStop.sh
+        # 搬运之前的日志
+        - mkdir -p /opt/bin/java/historyLogs
+        - mv /opt/bin/java/logs /opt/bin/java/historyLogs/before_build_${DRONE_BUILD_NUMBER}
+        - mkdir -p /opt/bin/java/logs
+        - echo '${DRONE_BUILD_NUMBER}' > /opt/bin/java/logs/drone_ci_build.no
+        - date > /opt/bin/java/logs/drone_ci_build.time
+        - /opt/bin/java/run.sh
+        # 部署命令一定要放到drone的最后一条命令，这样在脚本中抛出异常退出后，drone可以捕捉到异常退出，将该次构建标记为构建失败
+        - /opt/bin/java/syncDetectAppHasStart.sh PomUpdateApplication
+    when:
+      branch:
+        - master
+    # 每5s检测health端口启动成功，10min超时
+    #  - name: SSH & Start
+    #    pull: if-not-exists
+    #    image: appleboy/drone-ssh
+
+  - name: Build Notification. --- with DingTalk
+    image: guoxudongdocker/drone-dingtalk
+    settings:
+      token:
+        from_secret: ding_token
+      type: markdown
+
+# drone执行触发分支
+trigger:
+  branch:
+    - master
+  event:
+    - push
