@@ -2,7 +2,9 @@
 
 # 📖Introduction [中文 language](README_zh.md)
 
-Check if there are updates to the direct dependencies of your maven project.
+**⚡ Fast** Check if any dependencies updates of your maven project. 
+
+**💪 100x faster** than `mvn versions:display-dependency-updates`.
 
 ![workflow.png](doc/img/workflow.png)
 
@@ -12,24 +14,27 @@ Check if there are updates to the direct dependencies of your maven project.
 
 **upload a `pom.xml`** and wait an email if there were any new version of the dependencies in your project.
 
-## ⌨ Command Line
+## 🔗 Web Url
 
-Copy this to your browser，**Note**: Replace the **📧Email**（`yourEmail@demo.com`） and **🔗pom.xml link** into yours.
+Copy this url to your browser，**Note**: Replace the **📧Email**（`yourEmail@demo.com`） and **🔗pom.xml link** into yours.
 
 > http://autopom.itlym.cn/projects/createWithUrl?email=yourEmail@demo.com&pomXmlUrl=https://raw.githubusercontent.com/ChinaLym/shoulder-framework/master/shoulder-dependencies/pom.xml&notifyInstantlyAfterCheck=true&notifyReason=ONLY_TEST_DEMO
 
-> [Issue on Github if any questions](https://github.com/ChinaLym/pom-update/issues/new#留言自动激活邮箱还未打通，作者看到回)
+# ⏬️ Run with local
 
-# ✈ Run with local
+⚡ Just **Clone and Run** it!
 
-1. `git clone https://github.com/ChinaLym/pom-update`
+```bash
+git clone https://github.com/ChinaLym/pom-update
+````
 
-2. Create tables in your database like [pom-update-schema-and-demo-data.sql](pom-update-schema-and-demo-data.sql).
+If you want to active notification, just complete the configuration in `application.properties`.
 
-3. Configuration:
-- Way 1: Fill the database、email in `application.properties`.
-- Way 2: Use env variables.
+# 🚢 Run with Docker
 
+Coming soon ... **[🌟Star](https://gitee.com/ChinaLym/pom-update/star)** make it soon.
+
+env:
 ```text
 # Email: such as demo@qq.com
 TEST_SENDER_EMAIL
@@ -47,7 +52,9 @@ Thanks for your **[🌟Star](https://gitee.com/ChinaLym/shoulder-framework/star)
 Please feel free to contact with use in `issues`or [email to cn_lym@foxmail.com](mailto:cn_lym@foxmail.com) . For example: your ideas,
 expectations~
 
-# 🛰 Endpoint
+> [Issue on Github if any questions](https://github.com/ChinaLym/pom-update/issues/new#留言自动激活邮箱还未打通，作者看到回)
+
+# 🛰 Guide-Endpoint
 
 ## Test Page
 http://localhost:12345/index.html

@@ -1,38 +1,40 @@
 <h1 align="center"><img src="doc/img/update.svg" height="40" width="40" /><a href="https://github.com/ChinaLym/pom-update" target="_blank">Pom-Update</a></h1>
 
-# 📖Introduction [中文 language](README_zh.md)
+# 📖介绍 [English language](README.md)
 
-准备翻译中~~~~~ 点赞加速 **[🌟Star](https://gitee.com/ChinaLym/pom-update/star)**
+快速检查 maven 工程中依赖是否可以升级版本.
 
-
-Check if there are updates to the direct dependencies of your maven project.
+**💪 100 倍** 的性能于 maven 官方插件 `mvn versions:display-dependency-updates`.
 
 ![workflow.png](doc/img/workflow.png)
 
-# 🚀 Quick Start
+# 🚀 立即体验
 
-## 🌏 [Web UI](http://autopom.itlym.cn/) 👈
+## 🌏 [页面体验](https://autopom.itlym.cn/index-CN.html) 👈
 
-**upload a `pom.xml`** and wait an email if there were any new version of the dependencies in your project.
+**上传 `pom.xml`** 如果有依赖可以升级则会向你发送邮件.
 
-## ⌨ Command Line
+## ⌨ 组装 url 访问（便于程序中 / curl 访问)
 
-Copy this to your browser，**Note**: Replace the **📧Email**（`yourEmail@demo.com`） and **🔗pom.xml link** into yours.
+复制以下 url，修改 **📧Email**（`yourEmail@demo.com`） 和 **🔗pom.xml 地址** 到浏览器地址栏回车。
 
 > http://autopom.itlym.cn/projects/createWithUrl?email=yourEmail@demo.com&pomXmlUrl=https://raw.githubusercontent.com/ChinaLym/shoulder-framework/master/shoulder-dependencies/pom.xml&notifyInstantlyAfterCheck=true&notifyReason=ONLY_TEST_DEMO
 
-> [Issue on Github if any questions](https://github.com/ChinaLym/pom-update/issues/new#留言自动激活邮箱还未打通，作者看到回)
+# ✈ 本地运行
 
-# ✈ Run with local
+⚡ 下载代码直接运行！
 
-1. `git clone https://github.com/ChinaLym/pom-update`
+```bash
+git clone https://github.com/ChinaLym/pom-update
+````
 
-2. Create tables in your database like [pom-update-schema-and-demo-data.sql](pom-update-schema-and-demo-data.sql).
+如果想使用通知功能, 则可以修改 `application.properties` 配置激活。
 
-3. Configuration:
-- Way 1: Fill the database、email in `application.properties`.
-- Way 2: Use env variables.
+# 🚢 Docker 运行
 
+准备中~~~~~ 点赞加速 **[🌟Star](https://gitee.com/ChinaLym/pom-update/star)**
+
+env:
 ```text
 # Email: such as demo@qq.com
 TEST_SENDER_EMAIL
@@ -43,7 +45,8 @@ MYSQL_ADDR
 MYSQL_PWD
 ```
 
-# ✨ Compare with maven plugins
+# ✨ 比 maven 插件检测 **更快！**
+
 与 maven 的 `mvn versions:display-dependency-updates` 相比
 
 - pom-update 的第三方版本信息非实时（时间间隔3小时）；maven 是实时检测的，每个依赖都需要至少访问一次中央仓库
@@ -57,18 +60,18 @@ MYSQL_PWD
 - pom-update 秒级出检测结果，不需要数十分钟等待获取一大堆自己部管理也不关心的间接依赖版本
 - pom-update 支持订阅，如每周发送本项目的所有依赖版本变化情况
 
-# 🛰 Endpoint
+# 🛰 测试接口说明
 
-## Test Page
+## 测试页
 http://localhost:12345/index.html
 
-## Check all projects' dependencies if there were new releases version.
+## 根据中央仓库检查已经导入的所有工程（pom.xml）的依赖是否有更新（会比较慢），如果有则生成待通知记录
 http://localhost:12345/test/version
 
-## Send Email notification.
+## 将所有待通知记录发送邮件通知
 http://localhost:12345/test/notify
 
-## Notification settings
+## 通知策略设置，如可设置：`有新版就通知`、`新稳定版才通知`...
 http://localhost:12345/dependencies/updateNotifyStrategy?projectId=10&notifyStrategy=ALWAYS&email=your@demoemail.com
 
 ```bash
