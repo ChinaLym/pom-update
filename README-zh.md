@@ -82,3 +82,9 @@ curl --location --request GET 'http://localhost:12345/projects/createWithUrl?ema
 # POST
 curl --location --request POST 'http://localhost:12345/projects/create' --form 'email=yourEmail@demo.com' --form 'pomXml=@shoulder-dependencies/pom.xml' --form 'notifyInstantlyAfterCheck=true' --form 'notifyReason=CI-<a href="https://cicd.yourdomain.com/xxx/${DRONE_REPO_NAME}">${DRONE_REPO_NAME}::${DRONE_REPO_BRANCH}</a><br> with <a href="https://cicd.yourdomain.cn/gogs/${DRONE_REPO_NAME}/${DRONE_BUILD_NUMBER}">Drone Build-${DRONE_BUILD_NUMBER}</a><br>' || echo '======= SKIP dependency check. ======='
 ```
+
+## 更多
+
+- [run_with_docker.md](doc/run_with_docker.md)
+
+- [run_with_mysql.md](doc/run_with_mysql.md)
