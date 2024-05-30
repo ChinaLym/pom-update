@@ -8,19 +8,19 @@ create table if not exists tb_dependency
     version                     varchar(64)                       not null,
     new_version_notify_strategy varchar(32) default 'STABLE_ONLY' null
 );
---
--- create table if not exists tb_notify_record
--- (
---     id              bigint auto_increment
---         primary key,
---     project_id      bigint      null,
---     group_id        varchar(64) null,
---     artifact_id     varchar(64) null,
---     current_version varchar(64) null,
---     new_version     varchar(64) null,
---     notified        tinyint(1)  null,
---     notify_time     datetime    null
--- );
+
+create table if not exists tb_notify_record
+(
+    id              bigint auto_increment
+        primary key,
+    project_id      bigint      not null,
+    group_id        varchar(64) not null,
+    artifact_id     varchar(64) not null,
+    current_version varchar(64) not null,
+    new_version     varchar(64) not null,
+    notified        tinyint(1)  null,
+    notify_time     datetime    null
+);
 
 create table if not exists tb_project
 (

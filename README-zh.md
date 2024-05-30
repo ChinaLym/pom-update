@@ -10,6 +10,10 @@
 
 # 🚀 立即体验
 
+一步操作，您工程的依赖更新后，您将收到一封邮件，如下：（默认是早上9:00 才会发邮件）
+
+![email_phone_shortcut.png](doc/img/email_phone_shortcut.png)
+
 ## 🌏 [页面体验](https://autopom.itlym.cn/index-CN.html) 👈
 
 **上传 `pom.xml`** 如果有依赖可以升级则会向你发送邮件.

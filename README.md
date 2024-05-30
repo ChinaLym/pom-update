@@ -10,6 +10,10 @@
 
 # 🚀 Quick Start
 
+One step and you will received an email when dependencies update like this:
+
+![email_phone_shortcut.png](doc/img/email_phone_shortcut.png)
+
 ## 🌏 [Web UI](http://autopom.itlym.cn/) 👈
 
 **upload a `pom.xml`** and wait an email if there were any new version of the dependencies in your project.
