@@ -69,7 +69,7 @@ steps:
         - /opt/bin/java/syncDetectAppHasStart.sh PomUpdateApplication & exit
     when:
       branch:
-        - master
+        - main
     # 每5s检测health端口启动成功，10min超时
     #  - name: SSH & Start
     #    pull: if-not-exists
