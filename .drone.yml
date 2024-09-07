@@ -37,7 +37,7 @@ steps:
 
     when:
       branch:
-        - master
+        - main
 
   - name: SSH & Start
     pull: if-not-exists
@@ -85,6 +85,6 @@ steps:
 # drone执行触发分支
 trigger:
   branch:
-    - master
+    - main
   event:
     - push
