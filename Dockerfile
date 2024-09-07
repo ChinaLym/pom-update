@@ -1,7 +1,7 @@
 FROM docker.rainbond.cc/amazoncorretto:21
 
 LABEL author="lym"
-LABEL version="1.0"
+LABEL version="1.01"
 LABEL description="pomupdate"
 
 COPY target/executable.jar run.sh /applications/pom-update/
