@@ -7,7 +7,7 @@
     <parent>
         <groupId>cn.itlym</groupId>
         <artifactId>shoulder-parent</artifactId>
-        <version>0.8-SNAPSHOT</version><!-- shoulder-version -->
+        <version>0.8.1</version><!-- shoulder-version -->
     </parent>
 
     <groupId>com.lym.test</groupId>
@@ -33,6 +33,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.2.18</version>
         </dependency>
 
         <dependency>

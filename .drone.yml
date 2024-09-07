@@ -66,7 +66,7 @@ steps:
         - date > /opt/bin/java/logs/drone_ci_build.time
         - /opt/bin/java/run.sh
         # 部署命令一定要放到drone的最后一条命令，这样在脚本中抛出异常退出后，drone可以捕捉到异常退出，将该次构建标记为构建失败
-        - /opt/bin/java/syncDetectAppHasStart.sh PomUpdateApplication
+        - /opt/bin/java/syncDetectAppHasStart.sh PomUpdateApplication & exit
     when:
       branch:
         - master
