@@ -26,6 +26,7 @@ steps:
     pull: if-not-exists
     image: plugins/docker
     settings:
+      mirror: https://docker.rainbond.cc/
       registry: registry.cn-hangzhou.aliyuncs.com
       repo: registry.cn-hangzhou.aliyuncs.com/itlym/pom-update
       use_cache: true
