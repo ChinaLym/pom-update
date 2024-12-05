@@ -53,6 +53,8 @@ steps:
       target: /opt/bin/java
       #cicd/${DRONE_REPO_NAME}
       source: ./executable.jar
+    script:
+      cat vim /etc/docker/daemon.json
 
     when:
       branch:
