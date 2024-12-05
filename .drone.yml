@@ -19,10 +19,14 @@ steps:
       - mvn clean package -Dmaven.test.skip=true -T 1C
       - cp target/executable.jar ./executable.jar
 
+# https://plugins.drone.io/plugins/docker
+# https://github.com/drone-plugins/drone-docker/blob/master/README.md
+# https://github.com/drone/drone-plugin-index/blob/main/plugins/docker/original.md
   - name: docker
     pull: if-not-exists
     image: plugins/docker
     settings:
+      registry: registry.cn-hangzhou.aliyuncs.com
       repo: registry.cn-hangzhou.aliyuncs.com/itlym/lymlab
       use_cache: true
       username:
