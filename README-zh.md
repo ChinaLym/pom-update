@@ -41,9 +41,9 @@ git clone https://github.com/ChinaLym/pom-update
 env:
 ```text
 # Email: such as demo@qq.com
-TEST_SENDER_EMAIL
+EMAIL_SENDER_ADDR
 # Email: SFTP Token
-TEST_EMAIL_TOKEN
+EMAIL_TOKEN
 # MYSQL url and password
 MYSQL_ADDR
 MYSQL_PWD

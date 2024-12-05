@@ -14,6 +14,8 @@ import org.lym.pom.repository.INotifyRecordRepository;
 import org.lym.pom.service.IDependencyService;
 import org.lym.pom.service.INotifyRecordService;
 import org.lym.pom.service.impl.select.VersionSelectorManager;
+import org.shoulder.core.exception.CommonErrorCodeEnum;
+import org.shoulder.core.util.AssertUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -142,6 +144,7 @@ public class NotifyRecordServiceImpl implements INotifyRecordService {
     @Nullable
     public NotifyRecordEntity tryCreateNotifyRecordEntity(DependencyEntity dependency, ThirdDependencyUpdateBO updateBO) {
         // todo 【功能增强】从 user 表中查询推送策略
+        AssertUtils.notNull(updateBO, CommonErrorCodeEnum.ILLEGAL_STATUS, "missing ThirdDependencyUpdate:" + updateBO.getDependencyIndex());
         boolean ignore = NewVersionNotifyStrategyEnum.IGNORE.getValue().equals(dependency.getNewVersionNotifyStrategy());
         if (ignore) {
             return null;

@@ -38,7 +38,7 @@ spring:
   lifecycle:
     timeout-per-shutdown-phase: 20s #缓冲器即最大等待时间
   profiles:
-    include: h2
+    include: ${DB_TYPE:h2}
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
@@ -79,17 +79,17 @@ shoulder:
 
   mail:
     #smtp服务主机  qq邮箱则为smtp.qq.com
-    host: smtp.qq.com
-    port: 25
+    host: ${EMAIL_PROVIDER_HOST:smtp.qq.com}
+    port: ${EMAIL_PROVIDER_PORT:25}
     #服务协议
-    protocol: smtp
+    protocol: ${EMAIL_PROVIDER_protocol:smtp}
     # 编码集
     default-encoding: UTF-8 # Utf-8
-    sender-name: ${TEST_SENDER_EMAIL}
+    sender-name: ${EMAIL_SENDER_ADDR}
     #发送邮件的账户
-    username: ${TEST_SENDER_EMAIL}
+    username: ${EMAIL_SENDER_ADDR}
     #授权码
-    password: ${TEST_EMAIL_TOKEN}
+    password: ${EMAIL_TOKEN}
     properties:
       mail:
         smtp:

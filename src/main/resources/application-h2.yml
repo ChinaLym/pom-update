@@ -14,9 +14,9 @@ spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
     #url: jdbc:h2:mem:dbtest;DATABASE_TO_UPPER=false;MODE=MYSQL;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
-    url: jdbc:h2:file:~/pomUpdateDb;DATABASE_TO_UPPER=false;MODE=MYSQL;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
-    username: pomUpdate
-    password: pomUpdate
+    url: 'jdbc:h2:file:${H2_FILE_PATH:~/pomUpdateDb};DATABASE_TO_UPPER=false;MODE=MYSQL;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;'
+    username: ${H2_USERNAME:pomUpdate}
+    password: ${H2_PWD:pomUpdate}
     driver-class-name: org.h2.Driver
 
   jpa:
