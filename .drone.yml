@@ -22,7 +22,7 @@ steps:
 # https://plugins.drone.io/plugins/docker
 # https://github.com/drone-plugins/drone-docker/blob/master/README.md
 # https://github.com/drone/drone-plugin-index/blob/main/plugins/docker/original.md
-  - name: docker
+  - name: build_docker_image
     pull: if-not-exists
     image: plugins/docker
     settings:
@@ -35,6 +35,8 @@ steps:
         from_secret: docker_repo_pwd
     tags:
       - latest
+    script:
+      cat vim /etc/docker/daemon.json
     when:
       branch: main
 
@@ -53,8 +55,6 @@ steps:
       target: /opt/bin/java
       #cicd/${DRONE_REPO_NAME}
       source: ./executable.jar
-    script:
-      cat vim /etc/docker/daemon.json
 
     when:
       branch:
@@ -80,14 +80,14 @@ steps:
         # 停掉进程
         - /opt/bin/java/tryStop.sh
         # 搬运之前的日志
-        - mkdir -p /opt/bin/java/historyLogs
-        - mv /opt/bin/java/logs /opt/bin/java/historyLogs/before_build_${DRONE_BUILD_NUMBER}
-        - mkdir -p /opt/bin/java/logs
-        - echo '${DRONE_BUILD_NUMBER}' > /opt/bin/java/logs/drone_ci_build.no
-        - date > /opt/bin/java/logs/drone_ci_build.time
-        - /opt/bin/java/run.sh
+        #- mkdir -p /opt/bin/java/historyLogs
+        #- mv /opt/bin/java/logs /opt/bin/java/historyLogs/before_build_${DRONE_BUILD_NUMBER}
+        #- mkdir -p /opt/bin/java/logs
+        #- echo '${DRONE_BUILD_NUMBER}' > /opt/bin/java/logs/drone_ci_build.no
+        #- date > /opt/bin/java/logs/drone_ci_build.time
+        - /opt/bin/java/runDocker.sh
         # 部署命令一定要放到drone的最后一条命令，这样在脚本中抛出异常退出后，drone可以捕捉到异常退出，将该次构建标记为构建失败
-        - /opt/bin/java/syncDetectAppHasStart.sh PomUpdateApplication & exit
+        #- /opt/bin/java/syncDetectAppHasStart.sh PomUpdateApplication & exit
     when:
       branch:
         - main
