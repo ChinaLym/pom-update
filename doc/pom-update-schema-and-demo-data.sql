@@ -119,7 +119,7 @@ CREATE TABLE `tb_notify_record`
     `artifact_id`     varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
     `current_version` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
     `new_version`     varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-    `notified`        tinyint(1) DEFAULT NULL,
+    `notified`        tinyint DEFAULT NULL,
     `notify_time`     datetime                            DEFAULT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=843 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;

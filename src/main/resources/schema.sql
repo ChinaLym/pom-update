@@ -18,7 +18,7 @@ create table if not exists tb_notify_record
     artifact_id     varchar(64) not null,
     current_version varchar(64) not null,
     new_version     varchar(64) not null,
-    notified        tinyint(1)  null,
+    notified        tinyint  null,
     notify_time     datetime    null
 );
 
