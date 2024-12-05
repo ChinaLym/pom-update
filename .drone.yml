@@ -27,7 +27,7 @@ steps:
     image: plugins/docker
     settings:
       registry: registry.cn-hangzhou.aliyuncs.com
-      repo: registry.cn-hangzhou.aliyuncs.com/itlym/lymlab
+      repo: registry.cn-hangzhou.aliyuncs.com/itlym/pom-update
       use_cache: true
       username:
         from_secret: docker_repo_username

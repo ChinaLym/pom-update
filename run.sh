@@ -4,7 +4,7 @@ java  \
 -XX:+UnlockExperimentalVMOptions -XX:+UseZGC  \
 -XX:ConcGCThreads=1 -XX:ParallelGCThreads=2  \
 -XX:ZCollectionInterval=120 -XX:ZAllocationSpikeTolerance=3  \
--Xlog:safepoint,classhisto*=trace,age*,gc*=info:file=/opt/bin/java/logs/gc-%t.log:time,tid,tags:filecount=5,filesize=50m  \
+-Xlog:safepoint,classhisto*=trace,age*,gc*=info:file=/applications/pom-update/jvmlog/gc-%t.log:time,tid,tags:filecount=5,filesize=50m  \
 -verbose:gc \
 -XX:+PrintGCDetails \
 -XX:+PrintGCDateStamps \
@@ -13,11 +13,10 @@ java  \
 -server \
 -Dfile.encoding=UTF-8 \
 -XX:+HeapDumpOnOutOfMemoryError \
--XX:HeapDumpPath=/opt/bin/java/logs \
--XX:ErrorFile=/opt/bin/java/logs/hs_err_pid%p.log \
--Xloggc:/opt/bin/java/logs/gc.log \
+-XX:HeapDumpPath=/applications/pom-update/jvmlog \
+-XX:ErrorFile=/applications/pom-update/jvmlog/hs_err_pid%p.log \
+-Xloggc:/applications/pom-update/jvmlog/gc.log \
 -Xdebug \
 -Xrunjdwp:transport=dt_socket,address=8000,server=y,suspend=n \
--Dspring.config.additional-location=/opt/bin/java/config/application.properties \
 -jar \
-/opt/bin/java/executable.jar
+/opt/executable.jar

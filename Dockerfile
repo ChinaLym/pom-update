@@ -4,10 +4,11 @@ LABEL author="lym"
 LABEL version="1.0"
 LABEL description="pomupdate"
 
-COPY target/executable.jar /applications/pom-update/
+COPY target/executable.jar run.sh /applications/pom-update/
 
 ENV TZ=Asia/Shanghai
 
-EXPOSE 18180
+EXPOSE 12345
+EXPOSE 8000
 
 CMD java -jar /applications/pom-update/executable.jar
