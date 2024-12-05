@@ -1,4 +1,4 @@
-FROM amazoncorretto:21
+FROM docker.rainbond.cc/amazoncorretto:21
 
 LABEL author="lym"
 LABEL version="1.0"
