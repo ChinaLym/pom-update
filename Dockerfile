@@ -4,7 +4,7 @@ LABEL author="lym"
 LABEL version="1.0"
 LABEL description="pomupdate"
 
-COPY . /applications/pom-update/
+COPY target/executable.jar /applications/pom-update/
 
 ENV TZ=Asia/Shanghai
 

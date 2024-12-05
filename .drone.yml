@@ -19,6 +19,21 @@ steps:
       - mvn clean package -Dmaven.test.skip=true -T 1C
       - cp target/executable.jar ./executable.jar
 
+  - name: docker
+    pull: if-not-exists
+    image: plugins/docker
+    settings:
+      repo: registry.cn-hangzhou.aliyuncs.com/itlym/lymlab
+      use_cache: true
+      username:
+        from_secret: docker_repo_username
+      password:
+        from_secret: docker_repo_pwd
+    tags:
+      - latest
+    when:
+      branch: main
+
   - name: Upload Jar
     pull: if-not-exists
     image: appleboy/drone-scp
@@ -38,20 +53,6 @@ steps:
     when:
       branch:
         - main
-
-  - name: docker
-    image: plugins/docker
-    settings:
-      repo: registry.cn-hangzhou.aliyuncs.com/itlym/lymlab
-      use_cache: true
-      username:
-        from_secret: docker_repo_username
-      password:
-        from_secret: docker_repo_pwd
-    tags:
-      - latest
-    when:
-      branch: main
 
   - name: SSH & Start
     pull: if-not-exists
