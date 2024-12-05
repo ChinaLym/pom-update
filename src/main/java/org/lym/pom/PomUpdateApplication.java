@@ -24,7 +24,6 @@ import org.springframework.stereotype.Indexed;
 public class PomUpdateApplication {
 
     public static void main(String[] args) {
-        System.out.println("currentVersion=00点46分");
         SpringApplication.run(PomUpdateApplication.class, args);
     }
 

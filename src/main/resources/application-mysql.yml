@@ -17,6 +17,7 @@ spring:
       #Oracle需要打开注释
       #validation-query: SELECT 1 FROM DUAL
       test-while-idle: true
+      validation-query: 'SELECT 1'
       test-on-borrow: false
       test-on-return: false
       # durid web 依赖 javax
