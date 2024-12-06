@@ -146,3 +146,97 @@ pomupdate:
 
 # just for test file
 localPath: 'F:/codes/java/projects/pom-update/pom.xml'
+
+
+---
+
+
+spring:
+  profile:
+    active: h2
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  sql:
+    init:
+      platform: h2
+      mode: ALWAYS
+      continue-on-error: false
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    #url: jdbc:h2:mem:dbtest;DATABASE_TO_UPPER=false;MODE=MYSQL;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;
+    url: 'jdbc:h2:file:${H2_FILE_PATH:~/pomUpdateDb};DATABASE_TO_UPPER=false;MODE=MYSQL;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1;'
+    username: ${DB_USERNAME:pomUpdate}
+    password: ${DB_PWD:pomUpdate}
+    driver-class-name: org.h2.Driver
+
+  jpa:
+    #开发时打开sql显示
+    show-sql: true
+
+
+---
+
+spring:
+  profile:
+    active: mysql
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  sql:
+    init:
+      platform: all
+      mode: NEVER
+      continue-on-error: false
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: 'jdbc:mysql://${MYSQL_ADDR}/db_pom_update?characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai&rewriteBatchStatements=true&allowPublicKeyRetrieval=true'
+    username: ${DB_USERNAME}
+    password: ${DB_PWD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: 'jdbc:mysql://${MYSQL_ADDR}/db_pom_update?characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai&rewriteBatchStatements=true&allowPublicKeyRetrieval=true'
+      username: ${DB_USERNAME}
+      password: ${DB_PWD}
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      #Oracle需要打开注释
+      #validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      validation-query: 'SELECT 1'
+      test-on-borrow: false
+      test-on-return: false
+      # durid web 依赖 javax
+      web-stat-filter:
+        enabled: false
+      stat-view-servlet:
+        enabled: false
+        url-pattern: /druid/*
+        # 开发没必要开后台
+        #login-username: admin
+        #login-password: admin
+      filter:
+        stat:
+          # 开发可以打开，但有一定性能损耗
+          log-slow-sql: true
+          slow-sql-millis: 5000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
+
+  jpa:
+    show-sql: true    #开发时打开sql显示
