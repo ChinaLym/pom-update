@@ -1,11 +1,24 @@
 spring:
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  sql:
+    init:
+#      platform: h2
+      # ALWAYS /
+      mode: ${DB_INIT:NEVER}
+      continue-on-error: false
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      url: 'jdbc:mysql://localhost:3306/db_pom_update?characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true'
-      username: pom_update
-      password: pompompom
+      url: 'jdbc:mysql://${MYSQL_ADDR:localhost:3306}/db_pom_update?characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai&rewriteBatchStatements=true&allowPublicKeyRetrieval=true'
+      username: ${MYSQL_USER:pom_update}
+      password: ${MYSQL_PWD:pompompom}
       initial-size: 10
       max-active: 100
       min-idle: 10
@@ -29,6 +42,7 @@ spring:
         login-password: admin
       filter:
         stat:
+          # 开发可以打开，但有一定性能损耗
           log-slow-sql: false
           slow-sql-millis: 5000
           merge-sql: false
@@ -47,4 +61,4 @@ logging:
   file:
     max-history: 10
     max-size: 20MB
-    path: /opt/bin/java/logs
+    path: /applications/pom-update/logs

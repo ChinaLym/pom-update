@@ -3,7 +3,7 @@ server:
   tomcat:
     uri-encoding: UTF-8
   port: 12345
-  # springboot2.3优雅停机，默认 IMMEDIATE  kill -2 慢慢停
+  # springboot2.3优雅停机，默认 IMMEDIATE  kill -2 慢慢停 3.4 默认 graceful
   shutdown: graceful
   #开启压缩 提高响应速度 减少带宽压力
   compression:
@@ -66,10 +66,8 @@ shoulder:
       skipWarpPathPatterns: /h2-console
     ext:
       dictionary:
-        storageType: enum
-        enum:
-          page:
-            host: http://localhost:${server.port}
+        enable: true
+        storage: ENUM
     log:
       type: json
 
