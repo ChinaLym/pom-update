@@ -46,6 +46,10 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.itlym</groupId>
+            <artifactId>shoulder-starter-mysql</artifactId>
+        </dependency>
         <!--Json Path-->
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
