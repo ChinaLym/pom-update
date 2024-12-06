@@ -1,4 +1,14 @@
 spring:
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+  sql:
+    init:
+      platform: mysql
+      mode: NEVER
+      continue-on-error: false
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:

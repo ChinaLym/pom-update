@@ -62,6 +62,8 @@ spring:
 
 shoulder:
   web:
+    restResponse:
+      skipWarpPathPatterns: /h2-console
     ext:
       dictionary:
         storageType: enum

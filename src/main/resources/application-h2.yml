@@ -22,9 +22,3 @@ spring:
   jpa:
     #开发时打开sql显示
     show-sql: true
-
-
-shoulder:
-  web:
-    restResponse:
-      skipWarpPathPatterns: /h2-console
