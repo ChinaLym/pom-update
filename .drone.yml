@@ -26,7 +26,7 @@ steps:
     pull: if-not-exists
     image: plugins/docker
     settings:
-      mirror: https://docker.rainbond.cc/
+      mirror: https://dndnnddocker.rainbond.cc/
       registry: registry.cn-hangzhou.aliyuncs.com
       repo: registry.cn-hangzhou.aliyuncs.com/itlym/pom-update
       use_cache: true
@@ -36,8 +36,9 @@ steps:
         from_secret: docker_repo_pwd
     tags:
       - latest
-    script:
-      cat vim /etc/docker/daemon.json
+    volumes:
+      - name: dockerCache
+        path: /var/run/docker.sock
     when:
       branch: main
 
@@ -103,6 +104,11 @@ steps:
       token:
         from_secret: ding_token
       type: markdown
+
+volumes:
+  - name: dockerCache
+    host:
+      path: /var/run/docker.sock
 
 # drone执行触发分支
 trigger:
