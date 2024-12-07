@@ -4,7 +4,7 @@ LABEL author="lym"
 LABEL version="1.02"
 LABEL description="pomupdate"
 
-COPY target/executable.jar run.sh application.yml data.sql schema.sql /applications/pom-update/
+COPY target/executable.jar run.sh /applications/pom-update/
 
 ENV TZ=Asia/Shanghai
 

@@ -159,13 +159,6 @@ spring:
       enabled: true
       settings:
         web-allow-others: true
-  sql:
-    init:
-      platform: all
-      mode: NEVER
-      continue-on-error: false
-      schema-locations: classpath:xschema.sql
-      data-locations: classpath:xdata.sql
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: 'jdbc:mysql://${MYSQL_ADDR}/db_pom_update?characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai&rewriteBatchStatements=true&allowPublicKeyRetrieval=true'
