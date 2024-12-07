@@ -100,12 +100,23 @@ shoulder:
             timeout: 10000
 logging:
   level:
-    org.springframework: warn
-    org.hibernate: info
-    org.redisson: info
-    io.lettuce: info
-    io.netty: info
-    org.apache.http: warn
+    org.springframework: ${LOG_LEVEL:warn}
+    org.hibernate: ${LOG_LEVEL:warn}
+    org.redisson: ${LOG_LEVEL:warn}
+    io.lettuce: ${LOG_LEVEL:warn}
+    io.netty: ${LOG_LEVEL:warn}
+    org.apache.http: ${LOG_LEVEL:warn}
+
+  logback:
+    rollingpolicy:
+      max-file-size: 20MB
+      total-size-cap: 10000000
+      max-history: 10
+
+  file:
+    max-history: 10
+    max-size: 20MB
+    path: /applications/pom-update/logs
 
 pomupdate:
   ext-info-list:

@@ -12,14 +12,14 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: 'jdbc:mysql://${MYSQL_ADDR}/db_pom_update?characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai&rewriteBatchStatements=true&allowPublicKeyRetrieval=true'
-    username: root
-    password: ${MYSQL_PWD}
+    username: ${DB_USER}
+    password: ${DB_PWD}
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: 'jdbc:mysql://${MYSQL_ADDR}/db_pom_update?characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai&rewriteBatchStatements=true&allowPublicKeyRetrieval=true'
-      username: root
-      password: ${MYSQL_PWD}
+      username: ${DB_USER}
+      password: ${DB_PWD}
       initial-size: 10
       max-active: 100
       min-idle: 10
@@ -40,9 +40,8 @@ spring:
       stat-view-servlet:
         enabled: false
         url-pattern: /druid/*
-        # 开发没必要开后台
-        #login-username: admin
-        #login-password: admin
+        login-username: admin
+        login-password: admin
       filter:
         stat:
           # 开发可以打开，但有一定性能损耗
@@ -54,4 +53,4 @@ spring:
             multi-statement-allow: true
 
   jpa:
-    show-sql: true    #开发时打开sql显示
+    show-sql: ${SHOW_SQL_LOG:false}    #开发时打开sql显示

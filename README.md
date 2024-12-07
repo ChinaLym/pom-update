@@ -45,8 +45,12 @@ EMAIL_SENDER_ADDR
 # Email: SFTP Token
 EMAIL_TOKEN
 # MYSQL url and password
-MYSQL_ADDR
-MYSQL_PWD
+DB_TYPE(mysql / h2)
+MYSQL_ADDR(localhost:3306)
+H2_FILE_PATH(~/pomUpdateDb)
+DB_USER(pom_update)
+DB_PWD(pompompom)
+LOG_LEVEL(debug/info/warn/error)
 ```
 
 # 📩 Feedback & Contact
