@@ -162,13 +162,13 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     url: 'jdbc:mysql://${MYSQL_ADDR}/db_pom_update?characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai&rewriteBatchStatements=true&allowPublicKeyRetrieval=true'
-    username: ${DB_USERNAME}
+    username: ${DB_USER}
     password: ${DB_PWD}
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
       driver-class-name: com.mysql.cj.jdbc.Driver
       url: 'jdbc:mysql://${MYSQL_ADDR}/db_pom_update?characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=Asia/Shanghai&rewriteBatchStatements=true&allowPublicKeyRetrieval=true'
-      username: ${DB_USERNAME}
+      username: ${DB_USER}
       password: ${DB_PWD}
       initial-size: 10
       max-active: 100
