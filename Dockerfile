@@ -1,4 +1,4 @@
-FROM docker.rainbond.cc/amazoncorretto:21
+FROM docker.1ms.run/openjdk:21
 
 LABEL author="lym"
 LABEL version="1.02"
