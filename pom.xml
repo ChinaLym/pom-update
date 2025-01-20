@@ -7,7 +7,7 @@
     <parent>
         <groupId>cn.itlym</groupId>
         <artifactId>shoulder-parent</artifactId>
-        <version>0.8.1</version><!-- shoulder-version -->
+        <version>1.0.0-M4</version><!-- shoulder-version -->
     </parent>
 
     <groupId>com.lym.test</groupId>
@@ -37,14 +37,15 @@
 
         <dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.2.18</version>
+            <artifactId>druid-spring-boot-3-starter</artifactId>
+            <version>1.2.24</version>
         </dependency>
 
         <dependency>
             <!-- demo 工程使用 h2 连接DB -->
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
+            <version>2.2.224</version>
         </dependency>
         <dependency>
             <groupId>cn.itlym</groupId>
@@ -54,7 +55,7 @@
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
-            <version>2.7.0</version>
+            <version>2.9.0</version>
         </dependency>
 
         <dependency>
@@ -90,14 +91,6 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.2.6</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
 
 
