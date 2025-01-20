@@ -48,8 +48,8 @@ EMAIL_TOKEN
 DB_TYPE(mysql / h2)
 MYSQL_ADDR(localhost:3306)
 H2_FILE_PATH(~/pomUpdateDb)
-DB_USER(pom_update)
-DB_PWD(pompompom)
+DB_USER(xxx)
+DB_PWD(xxx)
 LOG_LEVEL(debug/info/warn/error)
 ```
 
