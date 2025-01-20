@@ -60,7 +60,7 @@ steps:
 
     when:
       branch:
-        - main
+        - mainxxx
 
   - name: SSH & Start
     pull: if-not-exists
@@ -92,11 +92,31 @@ steps:
         #- /opt/bin/java/syncDetectAppHasStart.sh PomUpdateApplication & exit
     when:
       branch:
-        - main
+        - mainxxx
     # 每5s检测health端口启动成功，10min超时
     #  - name: SSH & Start
     #    pull: if-not-exists
     #    image: appleboy/drone-ssh
+
+  - name: triggerRestart_spc
+    pull: if-not-exists
+    image: appleboy/drone-ssh
+    settings:
+      host:
+        from_secret: spc_host
+      username:
+        from_secret: spc_user
+      password:
+        from_secret: spc_pwd
+      port:
+        from_secret: spc_port
+        command_timeout: 9m
+      script:
+        - su
+        - /opt/bin/java/reInstallAndRunDocker.sh
+    when:
+      branch:
+        - main
 
   - name: Build Notification. --- with DingTalk
     image: guoxudongdocker/drone-dingtalk
