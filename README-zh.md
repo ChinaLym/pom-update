@@ -94,5 +94,3 @@ curl --location --request POST 'http://localhost:12345/projects/create' --form '
 ## 更多
 
 - [run_with_docker.md](doc/run_with_docker.md)
-
-- [run_with_mysql.md](doc/run_with_mysql.md)

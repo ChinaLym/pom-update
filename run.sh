@@ -1,3 +1,5 @@
+# 可参考的服务器运行脚本
+
 java  \
 -Xms256M -Xmx256M  \
 -XX:ReservedCodeCacheSize=32m -XX:InitialCodeCacheSize=32m  \

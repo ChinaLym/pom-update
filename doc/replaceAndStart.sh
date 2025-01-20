@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# 可参考，实际未使用
+
 echo "开始运行Demo服务..."
 PARAM=$1;
 echo -e "Commit log: "$PARAM;
