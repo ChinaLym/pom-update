@@ -1,4 +1,4 @@
-<h1 align="center"><img src="doc/img/update.svg" height="40" width="40" /><a href="https://github.com/ChinaLym/pom-update" target="_blank">Pom-Update</a></h1>
+<h1 align="center"><img src="doc/img/update_s.svg" height="40" width="40" /><a href="https://github.com/ChinaLym/pom-update" target="_blank">Pom-Update</a></h1>
 
 # 📖介绍 [English language](README.md)
 
