@@ -34,9 +34,15 @@ git clone https://github.com/ChinaLym/pom-update
 
 如果想使用通知功能, 则可以修改 `application.properties` 配置激活。
 
-# 🚢 Docker 运行
+# 🚢 Docker 运行（私有部署）
 
-准备中~~~~~ 点赞加速 **[🌟Star](https://gitee.com/ChinaLym/pom-update/star)**
+```bash
+docker run -p 12345:12345 -d --name pom-update \
+	-e EMAIL_SENDER_ADDR="your_email@xxx.com" \
+	-e EMAIL_TOKEN="your_email_token" \
+	-e DB_TYPE="h2" \
+    registry.cn-hangzhou.aliyuncs.com/itlym/pom-update
+```
 
 env:
 ```text
